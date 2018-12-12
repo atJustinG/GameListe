@@ -61,14 +61,19 @@ class Game
     private $plattform;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Entwickler", mappedBy="Game")
+     */
+    private $entwicklers;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Entwickler", inversedBy="gamesTitle")
      */
-    private $entwickler;
 
     public function __construct()
     {
         $this->plattform = new ArrayCollection();
         $this->entwickler = new ArrayCollection();
+        $this->entwicklers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,17 +129,6 @@ class Game
         return $this;
     }
 
-    public function getManyToMany(): ?string
-    {
-        return $this->ManyToMany;
-    }
-
-    public function setManyToMany(string $ManyToMany): self
-    {
-        $this->ManyToMany = $ManyToMany;
-
-        return $this;
-    }
 
     public function getPublisher(): ?string
     {
@@ -185,15 +179,16 @@ class Game
     /**
      * @return Collection|Entwickler[]
      */
-    public function getEntwickler(): Collection
+    public function getEntwicklers(): Collection
     {
-        return $this->entwickler;
+        return $this->entwicklers;
     }
 
     public function addEntwickler(Entwickler $entwickler): self
     {
-        if (!$this->entwickler->contains($entwickler)) {
-            $this->entwickler[] = $entwickler;
+        if (!$this->entwicklers->contains($entwickler)) {
+            $this->entwicklers[] = $entwickler;
+            $entwickler->addGame($this);
         }
 
         return $this;
@@ -201,8 +196,9 @@ class Game
 
     public function removeEntwickler(Entwickler $entwickler): self
     {
-        if ($this->entwickler->contains($entwickler)) {
-            $this->entwickler->removeElement($entwickler);
+        if ($this->entwicklers->contains($entwickler)) {
+            $this->entwicklers->removeElement($entwickler);
+            $entwickler->removeGame($this);
         }
 
         return $this;
