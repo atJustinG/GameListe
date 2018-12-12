@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games Liste{% endblock %}
+
+{% block body %}
+
+    <a href= "{{ path("app_game_addGame") }}">Add</a>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
