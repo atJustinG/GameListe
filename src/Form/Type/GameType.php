@@ -8,6 +8,7 @@
 
 namespace App\Form\Type;
 
+use App\Entity\Game;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,11 +24,12 @@ class GameType extends AbstractType
             ->add('release_date', TextType::class)
             ->add('review', TextType::class)
             ->add('publisher', TextType::class)
+            ->add('btnAdd', SubmitType::class,array('label' => 'Hinzufügen'))
             ;
     }
 
     public function configureOptions(OptionsResolver $resolver){
-        $resolver->setDefualt(array(
+        $resolver->setDefaults(array(
            'data_class' =>  Game::class,
         ));
     }

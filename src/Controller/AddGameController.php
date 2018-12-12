@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Game;
-use App\Form\GameType;
+use App\Form\Type\GameType;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +23,7 @@ class AddGameController extends AbstractController
     /**
      * @Route("/addGame", name="app_game_addGame")
      * @param Request $request
-     * @return void
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
 
     public function addGame(Request $request){
@@ -31,7 +31,7 @@ class AddGameController extends AbstractController
         $form = $this->createForm(GameType::class, $game);
 
         $form->handleRequest($request);
-        if($form->isubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($game);
             $entityManager->flush();
@@ -40,7 +40,7 @@ class AddGameController extends AbstractController
         }
 
         return $this->render(
-            'game/adDGamer.html.twig',
+            '/games/addGame.html.twig',
             array( 'form' => $form->createView())
         );
 
