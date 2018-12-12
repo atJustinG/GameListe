@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class Entwickler
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="entwickler")
+     */
+    private $gamesTitle;
+
+    public function __construct()
+    {
+        $this->gamesTitle = new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int
@@ -36,6 +48,34 @@ class Entwickler
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Game[]
+     */
+    public function getGamesTitle(): Collection
+    {
+        return $this->gamesTitle;
+    }
+
+    public function addGamesTitle(Game $gamesTitle): self
+    {
+        if (!$this->gamesTitle->contains($gamesTitle)) {
+            $this->gamesTitle[] = $gamesTitle;
+            $gamesTitle->addEntwickler($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGamesTitle(Game $gamesTitle): self
+    {
+        if ($this->gamesTitle->contains($gamesTitle)) {
+            $this->gamesTitle->removeElement($gamesTitle);
+            $gamesTitle->removeEntwickler($this);
+        }
 
         return $this;
     }

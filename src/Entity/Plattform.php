@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,16 @@ class Plattform
      * @ORM\Column(type="string", length=255)
      */
     private $firma;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="plattform")
+     */
+    private $title;
+
+    public function __construct()
+    {
+        $this->title = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,34 @@ class Plattform
     public function setFirma(string $firma): self
     {
         $this->firma = $firma;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Game[]
+     */
+    public function getTitle(): Collection
+    {
+        return $this->title;
+    }
+
+    public function addTitle(Game $title): self
+    {
+        if (!$this->title->contains($title)) {
+            $this->title[] = $title;
+            $title->addPlattform($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTitle(Game $title): self
+    {
+        if ($this->title->contains($title)) {
+            $this->title->removeElement($title);
+            $title->removePlattform($this);
+        }
 
         return $this;
     }
