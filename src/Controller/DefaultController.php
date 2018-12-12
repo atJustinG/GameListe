@@ -47,7 +47,7 @@ class DefaultController extends AbstractController
 
 
         $form= $this->createFormBuilder($task)
-       // ->add('task', TextType::class)
+        ->add('task', TextType::class)
         ->add('add', ButtonType::class, array('label' => 'Hinzufügen'))
         ->getForm();
         $task->setBtnAdd('add');
@@ -56,7 +56,4 @@ class DefaultController extends AbstractController
             ));
 
     }
-
-
-
 }

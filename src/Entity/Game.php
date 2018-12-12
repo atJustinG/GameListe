@@ -2,15 +2,26 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
  */
 class Game
 {
+    private $gameTitleText;
+    private $gameGenreText;
+    private $gameDateText;
+    private $gamReviewText;
+    private $btnAdd;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -139,6 +150,22 @@ class Game
         $this->publisher = $publisher;
 
         return $this;
+    }
+
+    public  function getGameTitleText(){
+        $this->gameTitleText;
+    }
+
+    public function setGameTitleText($gameTitleText){
+        $this->gameTitleText = $gameTitleText;
+    }
+
+    public function getBtnAdd(){
+        $this->btnAdd;
+    }
+
+    public function setBtnAdd($btnAdd){
+        $this->btnAdd=$btnAdd;
     }
 
     /**
