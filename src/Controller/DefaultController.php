@@ -30,7 +30,7 @@ class DefaultController extends AbstractController
         return Response($form);
     }*/
     /**
-     * @Route("/")
+     * @Route("/"), name="app_game_index"
      *
      */
 

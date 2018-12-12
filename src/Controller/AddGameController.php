@@ -8,11 +8,12 @@
 
 namespace App\Controller;
 use App\Entity\Game;
-use App\Form\Type;
+use App\Form\GameType;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -21,11 +22,33 @@ class AddGameController extends AbstractController
 
     /**
      * @Route("/addGame", name="app_game_addGame")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return void
      */
 
+    public function addGame(Request $request){
+        $game = new Game();
+        $form = $this->createForm(GameType::class, $game);
 
-    public function AddGame(){
+        $form->handleRequest($request);
+        if($form->isubmitted() && $form->isValid()){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($game);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_game_index');
+        }
+
+        return $this->render(
+            'game/adDGamer.html.twig',
+            array( 'form' => $form->createView())
+        );
+
+    }
+
+
+   /* public function AddGame(){
+
         $entityManager = $this->getDoctrine()->getManager();
         $game = new Game();
 
@@ -54,5 +77,6 @@ class AddGameController extends AbstractController
         return $this->render("/games/addGame.html.twig", array(
             'form' =>  $form->createView()
         ));
-    }
+    }*/
+
 }
