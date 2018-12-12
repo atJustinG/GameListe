@@ -17,10 +17,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
  */
 class Game
 {
-    private $gameTitleText;
-    private $gameGenreText;
-    private $gameDateText;
-    private $gamReviewText;
     private $btnAdd;
     /**
      * @ORM\Id()
@@ -150,14 +146,6 @@ class Game
         $this->publisher = $publisher;
 
         return $this;
-    }
-
-    public  function getGameTitleText(){
-        $this->gameTitleText;
-    }
-
-    public function setGameTitleText($gameTitleText){
-        $this->gameTitleText = $gameTitleText;
     }
 
     public function getBtnAdd(){

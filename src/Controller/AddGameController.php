@@ -12,6 +12,7 @@ use App\Form\Type;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -25,14 +26,31 @@ class AddGameController extends AbstractController
 
 
     public function AddGame(){
+        $entityManager = $this->getDoctrine()->getManager();
         $game = new Game();
 
+
         $game ->setBtnAdd('add');
+        $game->setTitle('');
+        $game->setGenre('');
+        $game->setReleaseDate();
+        $game->setReview('');
+        $game->setPublisher('');
+
 
         $form=$this->createFormBuilder($game)
-            ->add('add', SubmitType::class, array('label' => 'ADD'))
+            ->add('title', TextType::class)
+            ->add('genre', TextType::class)
+            ->add('release_date', TextType::class)
+            ->add('review', TextType::class)
+            ->add('publisher', TextType::class)
+            ->add('add', SubmitType::class, array('label' => 'Hinzufügen'))
             ->getForm();
-        $game->setBtnAdd('add');
+        //$entityManager->persist($game);
+        //$game->setBtnAdd('add');
+        //$entityManager->persist($game);
+
+        //$entityManager->flush();
         return $this->render("/games/addGame.html.twig", array(
             'form' =>  $form->createView()
         ));
