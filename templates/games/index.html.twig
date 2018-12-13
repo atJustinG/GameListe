@@ -8,8 +8,13 @@
 
     <div>
         <p>möchten Sie einen weiteren Datensatz einfügen?</p>
+        <ol>
+            {% for game in games %}
+                <li>{{ game.title }}</li>
+            {% endfor %}
+        </ol>
         <a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnYes">Spiel Hinzufügen</button></a>
-        <a href= "{{ path("app_game_showGame") }}"><button type="button" name="btnShow">Spiele anzeigen</button></a>
+
     </div>
 
 
