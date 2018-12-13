@@ -27,7 +27,9 @@ class DefaultController extends AbstractController
 
     public function index()
     {
+       $repository = $this->getDoctrine()->getRepository(Game::class);
 
+        $game = $repository->findAll();
         return $this->render('/games/index.html.twig');
     }
 

@@ -10,13 +10,9 @@ namespace App\Controller;
 use App\Entity\Game;
 use App\Entity\Entwickler;
 use App\Form\Type\GameType;
-use App\Form\Type\EntwicklerType;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AddGameController extends AbstractController
 {
