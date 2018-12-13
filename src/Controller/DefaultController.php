@@ -9,14 +9,10 @@
 namespace App\Controller;
 
 use App\Entity\IndexTask;
-use App\Form\Type;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Response;
 
 
 class DefaultController extends AbstractController
@@ -30,7 +26,7 @@ class DefaultController extends AbstractController
         return Response($form);
     }*/
     /**
-     * @Route("/"), name="app_game_index"
+     * @Route("/", name="app_game_index")
      *
      */
 

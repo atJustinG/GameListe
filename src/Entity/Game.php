@@ -6,11 +6,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
@@ -46,11 +42,6 @@ class Game
     private $review;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ManyToMany;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $publisher;
@@ -61,18 +52,14 @@ class Game
     private $plattform;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Entwickler", mappedBy="Game")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Entwickler", inversedBy="games")
      */
     private $entwicklers;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Entwickler", inversedBy="gamesTitle")
-     */
 
     public function __construct()
     {
         $this->plattform = new ArrayCollection();
-        $this->entwickler = new ArrayCollection();
         $this->entwicklers = new ArrayCollection();
     }
 

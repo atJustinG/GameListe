@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Game;
+use App\Entity\Entwickler;
 use App\Form\Type\GameType;
 use App\Form\Type\EntwicklerType;
 
@@ -29,7 +30,7 @@ class AddGameController extends AbstractController
     public function addGame(Request $request){
         $game = new Game();
         $entwickler = new Entwickler();
-        $form = $this->createForm(GameType::class, $game );
+        $form = $this->createForm(GameType::class, $game);
 
 
         $form->handleRequest($request);

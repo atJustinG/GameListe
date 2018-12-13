@@ -24,28 +24,20 @@ class Entwickler
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="entwickler")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="entwicklers")
      */
-    private $gamesTitle;
+    private $games;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", inversedBy="entwicklers")
-     */
-    private $game;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", inversedBy="entwicklers")
-     */
-    private $Game;
 
     public function __construct()
     {
-        $this->gamesTitle = new ArrayCollection();
-        $this->game = new ArrayCollection();
-        $this->Game = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
-
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
@@ -69,13 +61,13 @@ class Entwickler
      */
     public function getGame(): Collection
     {
-        return $this->game;
+        return $this->games;
     }
 
     public function addGame(Game $game): self
     {
-        if (!$this->game->contains($game)) {
-            $this->game[] = $game;
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
         }
 
         return $this;
@@ -83,8 +75,8 @@ class Entwickler
 
     public function removeGame(Game $game): self
     {
-        if ($this->game->contains($game)) {
-            $this->game->removeElement($game);
+        if ($this->games->contains($game)) {
+            $this->games->removeElement($game);
         }
 
         return $this;
