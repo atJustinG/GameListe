@@ -39,7 +39,7 @@ class AddGameController extends AbstractController
             $entityManager->persist($game);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_game_index');
+            return $this->redirectToRoute('app_game_addSuccess');
         }
 
         return $this->render(
@@ -49,6 +49,15 @@ class AddGameController extends AbstractController
 
     }
 
+    /**
+     * @Route ("/addSuccess", name = "app_game_addSuccess")
+     */
+
+    public function addSuccess(){
+        return $this->render(
+            '\games\addSuccess.html.twig'
+        );
+    }
 
    /* public function AddGame(){
 

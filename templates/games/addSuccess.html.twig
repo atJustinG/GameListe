@@ -7,10 +7,11 @@
     <h1>Datensatz erfolgreich gespeichert!</h1>
     <div>
         <p>möchten Sie einen weiteren Datensatz einfüen?</p>
-        <input type="button" name="btnYes">
+        <a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnYes">yes</button></a>
+        <a href= "{{ path("app_game_index") }}"><button type="button" name="btnNo">no</button></a>
     </div>
 
-    <a href= "{{ path("app_game_addGame") }}">Add</a>
+
 
 
 {% endblock %}
