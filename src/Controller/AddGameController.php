@@ -9,7 +9,7 @@
 namespace App\Controller;
 use App\Entity\Game;
 use App\Form\Type\GameType;
-
+use App\Form\Type\EntwicklerType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,7 +28,9 @@ class AddGameController extends AbstractController
 
     public function addGame(Request $request){
         $game = new Game();
-        $form = $this->createForm(GameType::class, $game);
+        $entwickler = new Entwickler();
+        $form = $this->createForm(GameType::class, $game );
+
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
