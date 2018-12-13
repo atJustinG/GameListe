@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games Liste{% endblock %}
+
+{% block body %}
+
+    <h1>Datensatz erfolgreich gespeichert!</h1>
+    <div>
+        <p>möchten Sie einen weiteren Datensatz einfüen?</p>
+        <input type="button" name="btnYes">
+    </div>
+
+    <a href= "{{ path("app_game_addGame") }}">Add</a>
+
+
+{% endblock %}
