@@ -8,12 +8,39 @@
 
     <div>
         <p>möchten Sie einen weiteren Datensatz einfügen?</p>
-        <ol>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Plattform</th>
+                <th>Review Score</th>
+                <th>Entwickler</th>
+                <th>Publisher</th>
+                <th></th>
+                <th></th>
+            </tr>
             {% for game in games %}
-                <li>{{ game.title }}</li>
+            <tr>
+                <td>{{ game.id }}</td>
+                <td>{{ game.title }}</td>
+                <td>{{ game.genre }}</td>
+                <td>{{ game.release_date }}</td>
+                <td>{{ game.plattform.name }}</td>
+                <td>{{ gamme.review }}</td>
+                <td>{{ game.entwickler.name }}</td>
+                <td>{{ game.publisher }}</td>
+                <td>test</td>
+                <td>test</td>
+
+            </tr>
             {% endfor %}
-        </ol>
+                {#{{ game.title }}#}
+
         <a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnYes">Spiel Hinzufügen</button></a>
+        </table>
 
     </div>
 
