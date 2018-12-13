@@ -4,9 +4,12 @@
 
 {% block body %}
 
-    <a href= "{{ path("app_game_addGame") }}">Add</a>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <h1>Welcome</h1>
+
+    <div>
+        <p>möchten Sie einen weiteren Datensatz einfügen?</p>
+        <a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnYes">Spiel Hinzufügen</button></a>
+    </div>
+
 
 {% endblock %}
