@@ -9,7 +9,16 @@
 namespace App\Controller;
 
 
-class changeGameController
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class changeGameController extends AbstractController
 {
+    /**
+     * @Route("/changeGame{id}", name="app_game_changeGame", requirements={"id"="\d+"})
+     */
+    public function changeGame($id){
+        return $this->render('/games/changeGame.html.twig');
+    }
 
 }

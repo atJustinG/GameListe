@@ -33,7 +33,7 @@
                 <td>{{ game.entwicklers|join('<br>')|raw }}</td>
                 <td>{{ game.publisher }}</td>
                 <td><a href= "{{ path("app_game_changeGame") }}"><button type="button" name="btnChange">Eintrag ändern</button></a></td>
-                <td><a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnDelete">Eintrag löschen</button></a></td>
+                <td><a href= "{{ path("app_game_index") }}"><button type="button" name="btnDelete">Eintrag löschen</button></a></td>
 
             </tr>
             {% endfor %}
