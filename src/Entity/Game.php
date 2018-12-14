@@ -22,7 +22,7 @@ class Game
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=255)
      */
     private $title;
 

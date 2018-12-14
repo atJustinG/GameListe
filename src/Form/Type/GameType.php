@@ -25,9 +25,39 @@ class GameType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('genre', TextType::class)
-            ->add('release_date', TextType::class)
+            ->add('release_date', choiceType::class, array(
+                'choices' => $this->getYears()
+
+                /*[
+                    $years = function(){
+                    $year=array();
+                        for($yearCount=1920; $yearCount<=2500; $yearCount++) {
+                            $year+=$yearCount;
+
+                        }
+                        return $year;
+                    },
+                    $years = function(){
+
+                        $year=array();
+                        for($yearCount=1920; $yearCount<=2500; $yearCount++) {
+                            $year+=$yearCount;
+
+                        }
+                        return $year;
+                    },
+                ]*/
+            ))
             ->add('review', TextType::class)
-            ->add('publisher', TextType::class)
+            ->add('publisher', ChoiceType::class, array(
+                'choices' => array(
+                    'Electronic Arts(EA)' => 'Electronic Arts',
+                    'Nintendo' => 'Nintendo',
+                    '2K' => '2K',
+                    'Activision Blizzard' => 'Activision Blizzard',
+                    'Ubisoft' => 'Ubisoft'
+                )
+            ))
 
 
             ->add('entwicklers', EntityType::class, array(
@@ -45,6 +75,16 @@ class GameType extends AbstractType
             ->add('btnAdd', SubmitType::class,array('label' => 'Hinzufügen'))
         ;
     }
+
+    public function getYears(){
+        $years = array();
+        foreach($years as $yr)
+        for($yearCount = 1920; $yearCount<=2500; $yearCount++){
+            $yr = $yearCount;
+        }
+        return $years;
+    }
+
 
     public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
