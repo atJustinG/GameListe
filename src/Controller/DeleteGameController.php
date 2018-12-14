@@ -12,7 +12,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class deleteGameController extends AbstractController
+class DeleteGameController extends AbstractController
 {
     /**
      * @Route("/deleteGame{id}", name="app_game_deleteGame")
