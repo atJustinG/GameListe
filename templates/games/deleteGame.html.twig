@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games Liste{% endblock %}
+
+{% block body %}
+
+    <h1>Games hinzufügen</h1>
+
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#{{ form_end(form) }}#}
+    <a href= "{{ path("app_game_index") }}"><button type="button" name="btnCancel">Abbruch</button></a>
+
+{% endblock %}

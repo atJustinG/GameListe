@@ -22,31 +22,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class GameType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
+        //dump($this->getYears());
+//       exit();
         $builder
             ->add('title', TextType::class)
             ->add('genre', TextType::class)
             ->add('release_date', choiceType::class, array(
                 'choices' => $this->getYears()
 
-                /*[
-                    $years = function(){
-                    $year=array();
-                        for($yearCount=1920; $yearCount<=2500; $yearCount++) {
-                            $year+=$yearCount;
-
-                        }
-                        return $year;
-                    },
-                    $years = function(){
-
-                        $year=array();
-                        for($yearCount=1920; $yearCount<=2500; $yearCount++) {
-                            $year+=$yearCount;
-
-                        }
-                        return $year;
-                    },
-                ]*/
             ))
             ->add('review', TextType::class)
             ->add('publisher', ChoiceType::class, array(
@@ -76,19 +59,26 @@ class GameType extends AbstractType
         ;
     }
 
-    public function getYears(){
-        $years = array();
-        foreach($years as $yr)
-        for($yearCount = 1920; $yearCount<=2500; $yearCount++){
-            $yr = $yearCount;
-        }
-        return $years;
-    }
+    public function buildChangeGameForm(FormBuilderInterface $builder, array $options){
+        $builder
+            ->add('id', SubmitType::class, array('label' => 'Eintrag ändern'))
+        ;
 
+    }
 
     public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
            'data_class' =>  Game::class,
         ));
+    }
+
+    public function getYears(){
+        $year=array();
+        $now = date('Y');
+        for($yearCount = 1920; $yearCount <= $now; $yearCount++) {
+            $year[$yearCount] = $yearCount;
+
+        }
+        return $year;
     }
 }
