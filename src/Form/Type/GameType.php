@@ -18,7 +18,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Routing\Route;
 
 class GameType extends AbstractType
 {
@@ -56,13 +55,20 @@ class GameType extends AbstractType
                 'multiple' => true,
                 'label' => 'Plattform:'
             ))
-            ->add('btnAdd', SubmitType::class,array('label' => 'Hinzufügen'))
         ;
+        if ($options['edit']){
+            $builder
+                ->add('btnChange', SubmitType::class,array('label' => 'bearbeiten'));
+        }else {
+            $builder
+            ->add('btnAdd', SubmitType::class, array('label' => 'Hinzufügen'));
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
            'data_class' =>  Game::class,
+            'edit' => null,
         ));
     }
 

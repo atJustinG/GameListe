@@ -15,6 +15,7 @@ class Game
 {
     private $btnAdd;
     private $btnChange;
+    private $btnDelete;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -144,6 +145,14 @@ class Game
 
     public function setBtnChange($btnChange){
         $this->btnChange=$btnChange;
+    }
+
+    public function getBtnDelete(){
+        $this->btnDelete;
+    }
+
+    public function setBtnDelete($btnDelete){
+        $this->btnDelete=$btnDelete;
     }
 
     /**

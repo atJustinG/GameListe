@@ -10,7 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\Game;
-use App\Form\Type\changeGameType;
+use App\Form\Type\GameType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +22,11 @@ class ChangeGameController extends AbstractController
      * @Route("/changeGame/{id}", name="app_game_changeGame")
      */
     public function changeGame($id, Request $request){
-        $game = new Game();
-        $form = $this->createForm(changeGameType::class, $game);
         $entityManager = $this->getDoctrine()->getManager();
         $game = $entityManager->getRepository(Game::class)->find($id);
+        $form = $this->createForm(GameType::class, $game, array('edit'=>true));
+
+
         if(!$game){
             throw $this->createNotFoundException(
                 'No Game found for id '.$id
