@@ -47,13 +47,14 @@ class GameType extends AbstractType
                 'class' => Entwickler::class,
                 'expanded' => true,
                 'multiple' => true,
-                'label' => 'Entwickler:'
+
             ))
             ->add('plattform', EntityType::class, array(
                 'class' => Plattform::class,
-                'expanded' =>  true,
+                'expanded' => true,
                 'multiple' => true,
-                'label' => 'Plattform:'
+
+
             ))
         ;
         if ($options['edit']){
