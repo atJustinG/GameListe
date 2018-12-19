@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Game
 {
     private $btnAdd;
+    private $btnChange;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -135,6 +136,14 @@ class Game
 
     public function setBtnAdd($btnAdd){
         $this->btnAdd=$btnAdd;
+    }
+
+    public function getBtnChange(){
+        $this->btnChange;
+    }
+
+    public function setBtnChange($btnChange){
+        $this->btnChange=$btnChange;
     }
 
     /**
