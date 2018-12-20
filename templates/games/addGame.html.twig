@@ -5,13 +5,9 @@
 {% block body %}
 
 <h1>Games hinzufügen</h1>
-    <div class="media">
-        <div class="media-body">
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
-        </div>
-    </div>
     <a href= "{{ path("app_game_index") }}"><button type="button" name="btnCancel">Abbruch</button></a>
 
 {% endblock %}
