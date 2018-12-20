@@ -58,11 +58,17 @@ class Game
      */
     private $entwicklers;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Genre", inversedBy="games")
+     */
+    private $Genre;
+
 
     public function __construct()
     {
         $this->plattform = new ArrayCollection();
         $this->entwicklers = new ArrayCollection();
+        $this->Genre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -204,6 +210,28 @@ class Game
         if ($this->entwicklers->contains($entwickler)) {
             $this->entwicklers->removeElement($entwickler);
             $entwickler->removeGame($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Genre[]
+     */
+
+    public function addGenre(Genre $genre): self
+    {
+        if (!$this->Genre->contains($genre)) {
+            $this->Genre[] = $genre;
+        }
+
+        return $this;
+    }
+
+    public function removeGenre(Genre $genre): self
+    {
+        if ($this->Genre->contains($genre)) {
+            $this->Genre->removeElement($genre);
         }
 
         return $this;

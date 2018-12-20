@@ -19,7 +19,7 @@ class DeleteGameType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-            ->add('btnDelete', SubmitType::class, array('label' => 'Ja'));
+            ->add('btnDelete', SubmitType::class, array('label' => 'Ja', 'attr' => array('class' => 'btn-danger' )));
     }
 
     public function configureOptions(OptionsResolver $resolver){

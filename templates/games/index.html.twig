@@ -9,7 +9,7 @@
     <div>
 
 <div class="row">
-        <table class="table-responsive-sm justify-content-sm-center">
+        <table class="table-responsive-md justify-content-sm-center">
             <thead >
                 <tr>
                     <th scope="col">ID</th>
@@ -30,13 +30,13 @@
             <tr>
                 <td scope="row">{{ game.id }}</td>
                 <td>{{ game.title }}</td>
-                <td>{{ game.genre }}</td>
+                <td>{{ game.genre|join('<br>')|raw }}</td>
                 <td>{{ game.releaseDate }}</td>
                 <td>{{ game.plattform|join('<br>')|raw }}</td>
                 <td>{{ game.review }}</td>
                 <td>{{ game.entwicklers|join('<br>')|raw }}</td>
                 <td>{{ game.publisher }}</td>
-                <td><a href= "{{ path("app_game_changeGame", {'id':game.id}) }}"><button type="button" class="btn btn-primary btn-sm" name="btnChange">Eintrag ändern</button></a></td>
+                <td><a href= "{{ path("app_game_changeGame", {'id':game.id}) }}"><button type="button" class="btn btn-primary btn-sm" id="btnChange" name="btnChange">Eintrag ändern</button></a></td>
                 <td><a href= "{{ path("app_game_deleteGame", {'id':game.id}) }}"><button type="button" class="btn btn-primary btn-sm" name="btnDelete">Eintrag löschen</button></a></td>
             </tr>
             {% endfor %}
