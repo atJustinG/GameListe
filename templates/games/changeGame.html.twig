@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    <div>
+    <h1>Eintrag bearbeiten</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
-        <a href= "{{ path("app_game_index") }}"><button type="button" name="btnCancel">Abbruch</button></a>
-    </div>
+        <a href= "{{ path("app_game_index") }}"><button type="button" class="btn btn-danger" name="btnCancel">Abbruch</button></a>
+
 {% endblock %}

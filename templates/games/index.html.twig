@@ -8,42 +8,72 @@
 
     <div>
 
-
-        <table>
-            <div class="row">
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-                <th>Plattform</th>
-                <th>Review Score</th>
-                <th>Entwickler</th>
-                <th>Publisher</th>
-                <tr></tr>
-                <tr></tr>
-            </tr>
-
+<div class="row">
+        <table class="table-responsive-sm justify-content-sm-center">
+            <thead >
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Release Year</th>
+                    <th scope="col">Plattform</th>
+                    <th scope="col">Review Score</th>
+                    <th scope="col">Entwickler</th>
+                    <th scope="col">Publisher</th>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
             {% for game in games %}
 
             <tr>
-                <td>{{ game.id }}</td>
+                <td scope="row">{{ game.id }}</td>
                 <td>{{ game.title }}</td>
                 <td>{{ game.genre }}</td>
                 <td>{{ game.releaseDate }}</td>
-                <td>{{ game.plattform|join|raw }}</td>
+                <td>{{ game.plattform|join('<br>')|raw }}</td>
                 <td>{{ game.review }}</td>
-                <td>{{ game.entwicklers|join|raw }}</td>
+                <td>{{ game.entwicklers|join('<br>')|raw }}</td>
                 <td>{{ game.publisher }}</td>
-                <td><a href= "{{ path("app_game_changeGame", {'id':game.id}) }}"><button type="button"  name="btnChange">Eintrag ändern</button></a></td>
-                <td><a href= "{{ path("app_game_deleteGame", {'id':game.id}) }}"><button type="button" name="btnDelete">Eintrag löschen</button></a></td>
+                <td><a href= "{{ path("app_game_changeGame", {'id':game.id}) }}"><button type="button" class="btn btn-primary btn-sm" name="btnChange">Eintrag ändern</button></a></td>
+                <td><a href= "{{ path("app_game_deleteGame", {'id':game.id}) }}"><button type="button" class="btn btn-primary btn-sm" name="btnDelete">Eintrag löschen</button></a></td>
             </tr>
             {% endfor %}
-                {#{{ game.title }}#}
-
-
+            </tbody>
         </table>
-        <a href= "{{ path("app_game_addGame") }}"><button type="button" name="btnYes">Spiel Hinzufügen</button></a>
+</div>
+
+        <a href= "{{ path("app_game_addGame") }}"><button type="button" class="btn btn-secondary" name="btnYes">Spiel Hinzufügen</button></a>
     </div>
 
 {% endblock %}
+
+{#bootstrap tests#}
+
+{#<div class="row" class="border">#}
+            {#<div class="col-sm">ID</div>#}
+            {#<div class="col-sm">Title</div>#}
+            {#<div class="col-sm">Genre</div>#}
+            {#<div class="col-sm">Release Date(Yr)</div>#}
+            {#<div class="col-sm">Plattform</div>#}
+            {#<div class="col-sm">Review Score</div>#}
+            {#<div class="col-sm">Entwickler</div>#}
+            {#<div class="col-sm">Publisher</div>#}
+            {#<div class="col-sm"></div>#}
+            {#<div class="col-sm"></div>#}
+        {#</div>#}
+        {#{% for game in games %}#}
+        {#<div class="row">#}
+            {#<div class="col-sm">{{ game.id }}</div>#}
+            {#<div class="col-sm">{{ game.title }}</div>#}
+            {#<div class="col-sm">{{ game.genre }}</div>#}
+            {#<div class="col-sm">{{ game.releaseDate }}</div>#}
+            {#<div class="col-sm">{{ game.plattform|join('<br>')|raw }}</div>#}
+            {#<div class="col-sm">{{ game.review }}</div>#}
+            {#<div class="col-sm">{{ game.entwicklers|join('<br>') }}</div>#}
+            {#<div class="col-sm">{{ game.publisher }}</div>#}
+            {#<div class="col-sm"><a href= "{{ path("app_game_changeGame", {'id':game.id}) }}"><button type="button"  name="btnChange">Eintrag ändern</button></a></td></div>#}
+            {#<div class="col-sm"><a href= "{{ path("app_game_deleteGame", {'id':game.id}) }}"><button type="button" name="btnDelete">Eintrag löschen</button></a></div>#}
+        {#</div>#}
+        {#{% endfor %}#}
